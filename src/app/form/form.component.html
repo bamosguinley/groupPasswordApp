@@ -1,19 +1,30 @@
 <div class="card ">
-  <div  class="alert alert-success" role="alert" >
+  <div  class="alert alert-success" role="alert" *ngIf="showMessage">
     Félicitation vous êtes connectés 🧐
   </div>
   <div class="card-body">
-   <form>
+   <form [formGroup]="formPass">
     <div class="mb-3">
       <label for="emailInput" class="form-label">Email</label>
-      <input type="email" class="form-control" id="emailInput" />
+      <input type="email" class="form-control" id="emailInput"  formControlName="email"/>
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input type="password" class="form-control" id="password"/>
+      <label for="exampleInputPassword1" class="form-label" >Password</label>
+      <input type="password" class="form-control" id="password" formControlName="password"  />
     </div>
-    <button type="submit" class="btn sub col-12 p-2" (click)="submitPassword('ffg','fff')">Envoyer</button>
+    <button type="submit" class="btn sub btn-primary col-12 p-2" [ngClass]="formPass.value.password?.length==0 || formPass.status=='INVALID'?'disabled':''"  (click)="submitPassword(formPass.value.password||'',formPass.value.email ||'') ">
+      <i class="bi bi-lock-fill" *ngIf="formPass.value.password?.length==0 || formPass.status=='INVALID'"></i>
+      <i class="bi bi-unlock-fill"  *ngIf="!(formPass.value.password?.length==0 || formPass.status=='INVALID')"></i>
+      Envoyer</button>
   </form>
   </div>
 </div>
-<app-validation></app-validation>
+
+<div class="card mt-3" *ngIf="currentEmail && currentPassword">
+    <div class="card-body">
+        <p>{{"Email: "+currentEmail}}</p>
+        <p>{{"Password: "+currentPassword}}</p>
+    </div>
+</div>
+
+<app-validation [verifpassword]="formPass"></app-validation>

@@ -3,37 +3,37 @@
     <p>Le mot de passe doit contenir les élements suivants</p>
     <div>
       <div class="min">
-        <p class="text-danger">
+        <p [ngClass]="!rules[2].test(verifpassword.value.password)?'text-danger':'text-success'">
           <span>
-            <i class="bi bi-check-lg"></i>
-            <i class="bi bi-x-lg"></i>
+            <i  *ngIf="rules[2].test(verifpassword.value.password)" class="bi bi-check-lg" ></i>
+            <i *ngIf="!rules[2].test(verifpassword.value.password)" class="bi bi-x-lg"></i>
           </span>
           Une lettre minuscule
         </p>
       </div>
-      <div class="maj">
+      <div class="maj" [ngClass]="!rules[1].test(verifpassword.value.password)?'text-danger':'text-success'">
         <p>
           <span>
-            <i class="bi bi-check-lg" ></i>
-            <i class="bi bi-x-lg"></i>
+            <i  *ngIf="rules[1].test(verifpassword.value.password)" class="bi bi-check-lg" ></i>
+            <i *ngIf="!rules[1].test(verifpassword.value.password)" class="bi bi-x-lg"></i>
           </span>
           Une lettre majuscule
         </p>
       </div>
-      <div class="chiffre">
-        <p class="text-danger">
+      <div class="chiffre" [ngClass]="!rules[3].test(verifpassword.value.password)?'text-danger':'text-success'">
+        <p >
           <span>
-            <i class="bi bi-check-lg"></i>
-            <i class="bi bi-x-lg"></i>
+            <i  *ngIf="rules[3].test(verifpassword.value.password)" class="bi bi-check-lg" ></i>
+            <i *ngIf="!rules[3].test(verifpassword.value.password)" class="bi bi-x-lg"></i>
           </span>
           Une chiffre
         </p>
       </div>
-      <div class="taille">
-        <p class="text-danger">
+      <div class="taille"  [ngClass]="!rules[0].test(verifpassword.value.password)?'text-danger':'text-success'">
+        <p >
           <span>
-            <i class="bi bi-check-lg"></i>
-            <i class="bi bi-x-lg"></i>
+            <i  *ngIf="rules[0].test(verifpassword.value.password)" class="bi bi-check-lg" ></i>
+            <i *ngIf="!rules[0].test(verifpassword.value.password)" class="bi bi-x-lg"></i>
           </span>
           8 caractères minimum
         </p>
@@ -41,3 +41,5 @@
     </div>
   </div>
 </div>
+
+<p>{{verifpassword.value}}</p>
