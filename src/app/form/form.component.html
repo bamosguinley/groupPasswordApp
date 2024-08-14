@@ -3,14 +3,16 @@
    <form>
     <div class="mb-3">
       <label for="emailInput" class="form-label">Email</label>
-      <input type="email" class="form-control" id="emailInput" />
+      <input type="email" class="form-control" id="emailInput"  [formControl]="email"/>
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label" >Password</label>
-      <input type="password" class="form-control" id="password"/>
+      <input type="password" class="form-control" id="password" [formControl]="password"/>
     </div>
-    <button type="submit" class="btn sub col-12 p-2">Envoyer</button>
+    <button type="submit" class="btn sub col-12 p-2" >Envoyer</button>
   </form>
   </div>
 </div>
+<p>{{email.value}}</p>
+<p>{{password.value}}</p>
 <app-validation></app-validation>
