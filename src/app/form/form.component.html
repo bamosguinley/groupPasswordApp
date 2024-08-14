@@ -7,9 +7,12 @@
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label" >Password</label>
-      <input type="password" class="form-control" id="password" formControlName="password"/>
+      <input type="password" class="form-control" id="password" formControlName="password"  />
     </div>
-    <button type="submit" class="btn sub col-12 p-2" ><i class="bi bi-lock-fill" ></i>Envoyer</button>
+    <button type="submit" class="btn sub btn-primary col-12 p-2" [ngClass]="formPass.value.password?.length==0 || formPass.status=='INVALID'?'disabled':''">
+      <i class="bi bi-lock-fill" *ngIf="formPass.value.password?.length==0 || formPass.status=='INVALID'"></i>
+      <i class="bi bi-unlock-fill"  *ngIf="!(formPass.value.password?.length==0 || formPass.status=='INVALID')"></i>
+      Envoyer</button>
   </form>
   </div>
 </div>
@@ -18,3 +21,4 @@
 <app-validation [verifpassword]="formPass"></app-validation>
 <!-- {{password.status}} -->
  {{formPass.status}}
+ {{formPass.untouched}}
