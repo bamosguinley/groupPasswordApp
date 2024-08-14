@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -7,9 +7,10 @@ import { FormControl } from '@angular/forms';
   styleUrl: './form.component.css'
 })
 export class FormComponent {
-   email= new FormControl('');
-   password = new FormControl('');
-   onSend( email:string ,password:string){
-    console.log('envoi')
-   }
+  
+    formPass= new FormGroup({
+      email: new FormControl(''),
+      password: new FormControl('', [ Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]
+       ),
+    })
 }
