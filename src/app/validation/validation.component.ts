@@ -15,8 +15,5 @@ rules = [
   { rule: 'Au moins un chiffre', test: (password: string) => /\d/.test(password) },
   { rule: 'Au moins un caractère spécial', test: (password: string) => /[!@#$%^&*(),.?":{}|<>]/.test(password) },
 ]; 
-ng0nChanges(){
-console.log('fff');
 
-}
 }
