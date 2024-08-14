@@ -7,3 +7,7 @@
 - conditionnement du style et de l'affichage des messages d'erreur en fonction du password validator. Par exemple si le required du password est validé :
  password.errors?.['required'].
  ......
+
+ rules de validation :  [Validators.required,
+        Validators.minLength(8),
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]
